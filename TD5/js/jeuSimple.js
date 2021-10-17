@@ -33,6 +33,8 @@ aGagne(symbole, y, x) {
 
   // gagné diagonale
   if (x === y) {
+
+    console.log('oui dans la diag');
     let diagonale = '';
 
     for (let lc = 0; lc < this._taille; lc++) {
@@ -47,7 +49,7 @@ aGagne(symbole, y, x) {
   // gagné diag inverse
   if (x === this._taille - (y + 1)) {
     let inverse = '';
-    
+
     for (let lc = 0; lc < this._taille; lc++) {
       inverse += this._grille[lc][this._taille - (lc + 1)];
     }
