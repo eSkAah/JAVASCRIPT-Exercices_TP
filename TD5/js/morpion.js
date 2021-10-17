@@ -1,5 +1,5 @@
 import {Morpion} from './jeu.js';
-import { MorpionSimple } from './jeuSimple.js';
+import {MorpionSimple} from './jeuSimple.js';
 
 let morpion;
 let joueur = 1;
@@ -82,7 +82,7 @@ btnReset.addEventListener('click', restart);
      
     const zoneMessage = document.getElementById('messages');
 
-     const  victoire = morpion.aGagne(symbole, y, x);
+     const victoire = morpion.aGagne(symbole, y, x);
     
       if(victoire) {
     
