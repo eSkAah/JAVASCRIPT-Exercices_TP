@@ -15,8 +15,6 @@ setPion(symbole, ligne, colonne){
 aGagne(symbole, y, x) {
   const aTrouver = symbole.repeat(3);
 
-  console.log(aTrouver);
-
   // gagné en ligne ? : concaténation de la ligne, et recherche de la sous-chaîne gagnante
   let ligne = '';
   this._grille[y].forEach(element => (ligne += element));
@@ -34,7 +32,6 @@ aGagne(symbole, y, x) {
   // gagné diagonale
   if (x === y) {
 
-    console.log('oui dans la diag');
     let diagonale = '';
 
     for (let lc = 0; lc < this._taille; lc++) {

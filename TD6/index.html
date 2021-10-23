@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>AJAX - API requests</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center">Selectionnez une Ville</h2>
+      <div class="mt-5 mb-5 col-10 offset-2  d-flex justify-content-between">
+
+        <select  type="form-select" id="regions" onchange="getDeparts()" >
+        </select>
+
+        <select  type="form-select" id="departs" onchange="getVilles()" >
+        </select>
+
+        <select  type="form-select" id="villes" onchange="getInfosVille()" >
+        </select>
+        <br>
+
+      </div>
+        <p id="population">Selectionnez une communes pour connaitre sa population...</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>#NOM</th>
+              <th>#CODE POSTAL</th>
+              <th>#POPULATION</th>
+            </tr>
+          </thead>
+          <tbody id="tabVilles">
+          
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script> 
+</body>
+</html>
