@@ -8,7 +8,8 @@
  * https://geo.api.gouv.fr/regions
  */
 function getRegions(){
-  
+ 
+
   fetch('https://geo.api.gouv.fr/regions',{method: 'get'})
   .then( res => res.json())
   .then( (res) => {
@@ -17,7 +18,7 @@ function getRegions(){
       let result = document.createElement('option');
       result.textContent = element.nom;
       result.value = element.code;
-      document.getElementById('regions').appendChild(result);
+      regions.appendChild(result);
     })
   })
   .catch( (err) => {
@@ -30,9 +31,13 @@ function getRegions(){
  * @param {String} regCode 
  */
 function getDeparts(){
+  clearTableau();
   let regCode = document.getElementById('regions').value;
-  let departements = document.getElementById('departs');
-      departements.textContent =  "";
+  const departements = document.getElementById('departs');
+    departements.textContent =  "";
+  const defaultValue = document.createElement('option');
+    defaultValue.textContent = "---Choisissez un département---";
+    departements.appendChild(defaultValue);
 
   fetch('https://geo.api.gouv.fr/regions/'+ regCode +'/departements',{method: 'get'})
   .then( res => res.json())
@@ -57,8 +62,11 @@ function getDeparts(){
 function getVilles(){
   let departCode = document.getElementById('departs').value;
   let villes = document.getElementById('villes');
-      villes.textContent = "";
-  
+    villes.textContent = "";
+  const defaultValue = document.createElement('option');
+    defaultValue.textContent = "---Choisissez un département---";
+    villes.appendChild(defaultValue);
+   
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
   .then( (res) => {
@@ -67,8 +75,8 @@ function getVilles(){
       let result = document.createElement('option');
       result.textContent = ville.nom;
       result.value = ville.code;
-      result.dataset.codePostal = ville.codePostaux;
       villes.appendChild(result);
+
     })   
   })
   .catch( (err) => {
@@ -79,10 +87,7 @@ function getVilles(){
 
 
 function getInfosVille(){
-  const tabVilles = document.getElementById('tabVilles');
-      while(tabVilles.firstChild){
-        tabVilles.removeChild(tabVilles.firstChild);
-      };
+  clearTableau();
 
   let departCode = document.getElementById('departs').value;
   let codeVille = document.getElementById('villes').value;
@@ -104,7 +109,7 @@ function getInfosVille(){
     res.forEach(ville => {
 
       // Utilisation d'une fonction de filtrage qui vérifie les codesPostaux entre ceux de la ville selectionnée, et ceux des villes dans la liste
-      if(filtre(villeSelectionne.codesPostaux, ville.codesPostaux) !== -1 && ville.codesPostaux !== undefined){
+      if(filtre(villeSelectionne.codesPostaux, ville.codesPostaux) !== -1){
 
         //stockage du code postale qui a matché dans une variable car on l'a en retour de fonction
         const cp = filtre(villeSelectionne.codesPostaux, ville.codesPostaux);
@@ -151,6 +156,13 @@ function filtre(selectionne, objetFiltre){
   return -1;
 }
 
+
+function clearTableau(){
+  const tabVilles = document.getElementById('tabVilles');
+  while(tabVilles.firstChild){
+    tabVilles.removeChild(tabVilles.firstChild);
+  };
+}
 
 
 // Lancement de la récupération de données via l'API
