@@ -12,16 +12,15 @@
   <div class="container">
     <div class="row">
       <h2 class="text-center">Selectionnez une Ville</h2>
-      <div class="mt-5 mb-5 col-10 offset-2  d-flex justify-content-between">
+      <div class="mt-5 mb-5 col-10 offset-1  d-flex justify-content-between">
 
-        <select  type="form-select" id="regions" onchange="getDeparts()"> 
-          <option>---Choisissez un département---</option>
+        <select class="form-select" multiple size=10 type="form-select" id="regions" onchange="getDeparts()"> 
         </select>
 
-        <select  type="form-select" id="departs" onchange="getVilles()" > 
+        <select class="form-select" multiple size=10 type="form-select" id="departs" onchange="getVilles()" > 
         </select>
 
-        <select  type="form-select" id="villes" onchange="getInfosVille()" > 
+        <select class="form-select" multiple size=10 type="form-select" id="villes" onchange="getInfosVille()" > 
         </select>
         <br>
 
@@ -33,7 +32,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <table class="table table-dark table-striped">
+        <table class="table table-hover table-success table-striped">
           <thead>
             <tr>
               <th>#NOM</th>

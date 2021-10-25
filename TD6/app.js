@@ -35,9 +35,9 @@ function getDeparts(){
   let regCode = document.getElementById('regions').value;
   const departements = document.getElementById('departs');
     departements.textContent =  "";
-  const defaultValue = document.createElement('option');
-    defaultValue.textContent = "---Choisissez un département---";
-    departements.appendChild(defaultValue);
+  // const defaultValue = document.createElement('option');
+  //   defaultValue.textContent = "---Choisissez un département---";
+  //   departements.appendChild(defaultValue);
 
   fetch('https://geo.api.gouv.fr/regions/'+ regCode +'/departements',{method: 'get'})
   .then( res => res.json())
@@ -63,9 +63,9 @@ function getVilles(){
   let departCode = document.getElementById('departs').value;
   let villes = document.getElementById('villes');
     villes.textContent = "";
-  const defaultValue = document.createElement('option');
-    defaultValue.textContent = "---Choisissez un département---";
-    villes.appendChild(defaultValue);
+  // const defaultValue = document.createElement('option');
+  //   defaultValue.textContent = "---Choisissez un département---";
+  //   villes.appendChild(defaultValue);
    
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
