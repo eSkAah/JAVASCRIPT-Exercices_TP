@@ -92,11 +92,12 @@ function getInfosVille(){
   let departCode = document.getElementById('departs').value;
   let codeVille = document.getElementById('villes').value;
   let population = document.getElementById('population');
+  let villeSelectionne;
 
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
   .then( (res) => {
-    let villeSelectionne;
+    
 
     //On récupère l'objet complet de la ville selectionné dans l'input et on affiche son nom et sa population
     for(let i = 0; i < res.length; i++){
