@@ -1,7 +1,4 @@
-// Créer trois liste déroulantes contenant régions, départements de la région sélectionnée,
-
-// récupérer le Json des region de france et l'afficher dans le premier <select>
-
+let monStockage = localStorage;
 
 /**
  * Fonction qui permet ed récupérer les différentes régions de France via l'API
@@ -63,9 +60,6 @@ function getVilles(){
   let departCode = document.getElementById('departs').value;
   let villes = document.getElementById('villes');
     villes.textContent = "";
-  // const defaultValue = document.createElement('option');
-  //   defaultValue.textContent = "---Choisissez un département---";
-  //   villes.appendChild(defaultValue);
    
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
@@ -120,11 +114,13 @@ function getInfosVille(){
         let colNom = ligne.insertCell();
         let colCp = ligne.insertCell();
         let colPop = ligne.insertCell();
+        let colMeteo = ligne.insertCell();
 
         //Ajout du contenu qui se trouve dans notre objet, et dans la variable
         colNom.textContent = ville.nom;
         colCp.textContent = cp;
         colPop.textContent = ville.population;
+        colMeteo.innerHTML = '<button class="btn btn-dark" onclick="meteo(`'+ ville.nom + '`)">Voir Météo</button>';
 
         tabVilles.appendChild(ligne);
         
@@ -165,6 +161,12 @@ function clearTableau(){
   };
 }
 
+function meteo(villeCible){
+  console.log(villeCible);
+  console.log(typeof(villeCible));
+  localStorage.setItem('ville', villeCible);
+  window.open('/TD6/meteo.html');
+}
 
 // Lancement de la récupération de données via l'API
 getRegions();
