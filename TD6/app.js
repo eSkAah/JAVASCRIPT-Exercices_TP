@@ -83,10 +83,12 @@ function getVilles(){
 function getInfosVille(){
   clearTableau();
 
+  let communesPop = document.getElementById('communesPop');
   let departCode = document.getElementById('departs').value;
   let codeVille = document.getElementById('villes').value;
   let population = document.getElementById('population');
   let villeSelectionne;
+  let totalPop = [];
 
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
@@ -114,19 +116,19 @@ function getInfosVille(){
         let colNom = ligne.insertCell();
         let colCp = ligne.insertCell();
         let colPop = ligne.insertCell();
-        let colMeteo = ligne.insertCell();
 
         //Ajout du contenu qui se trouve dans notre objet, et dans la variable
         colNom.textContent = ville.nom;
         colCp.textContent = cp;
         colPop.textContent = ville.population;
-        colMeteo.innerHTML = '<button class="btn btn-dark" onclick="meteo(`'+ ville.nom + '`)">Voir Météo</button>';
+
+        totalPop.push(ville.population);
+        communesPop.textContent = "La population total dans ces communes est de : " +  totalPop.reduce(sum);
+
 
         tabVilles.appendChild(ligne);
         
-      }else{
-        console.log('Aucune commune éxistante dans la base de données');
-      }      
+      }
       
     })
   }).catch( (err) => {
@@ -135,6 +137,11 @@ function getInfosVille(){
 
 }
 
+
+
+function sum(previousValue, currentValue) {
+  return previousValue + currentValue;
+}
 
 /**
  * Permet de vérifier si un des codePostaux entre la ville selectionné et ceux dans la liste Match, si oui on fait un retour de ce code, sinon renvoi -1
