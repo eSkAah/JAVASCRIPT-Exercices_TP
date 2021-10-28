@@ -138,7 +138,12 @@ function getInfosVille(){
 }
 
 
-
+/**
+ * 
+ * @param {Number} previousValue 
+ * @param {Number} currentValue 
+ * @returns 
+ */
 function sum(previousValue, currentValue) {
   return previousValue + currentValue;
 }
