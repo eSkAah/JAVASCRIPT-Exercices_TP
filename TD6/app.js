@@ -164,7 +164,7 @@ function meteo(villeCible){
   console.log(villeCible);
   console.log(typeof(villeCible));
   localStorage.setItem('ville', villeCible);
-  window.open('/TD6/meteo.html');
+  window.open('./meteo.html');
 }
 
 // Lancement de la récupération de données via l'API
