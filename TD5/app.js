@@ -125,7 +125,6 @@ function getInfosVille(){
         totalPop.push(ville.population);
         communesPop.textContent = "La population total dans ces communes est de : " +  totalPop.reduce(sum);
 
-
         tabVilles.appendChild(ligne);
         
       }
