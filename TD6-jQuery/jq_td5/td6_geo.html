@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TD 5</title>
+    <link rel="stylesheet" href="td6.css" />
+  </head>
+  <body>
+    <h1>TD n°5</h1>
+
+    <select id="regions"></select>
+    <select id="departments"></select>
+
+    <select id="cities"></select>
+
+    <div id="details">
+      <p>Population : <span id="population"></span> habitants.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Code Postal</th>
+            <th>Population</th>
+          </tr>
+        </thead>
+        <tbody id="tdata"></tbody>
+      </table>
+
+      <p>Population totale : <span id="total"></span> habitants.</p>
+    </div>
+
+    <button id="btn-weather">Voir la météo</button>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="td6_geo.js"></script>
+  </body>
+</html>

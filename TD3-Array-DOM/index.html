@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>TD3 - Utilisation des modules</title>
+</head>
+<body style="background-color: rgb(238, 238, 238);">
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3 mt-3" >
+      <h1 style="color: rgb(53, 53, 53);">TD n° 4 - Utilisation des modules</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3 p-3 mt-5 bg-light rounded shadow">
+      
+      <div class="col-12" id="dichoMenu">
+      <h3>Saisie des élements du tableau :</h3>
+      <p class="">Vous ne pouvez pas laisser le champ vide.</p>
+        <div class="d-flex mt-3" id="numberInput">
+          <input type="number" value="0" />
+          <button class="ms-3 btn btn-dark"  id="addNewInput">Add</button>
+        </div>
+      </div>
+      <div class="col-6 mt-2 alert alert-danger" hidden id="error"></div>
+
+  
+      <div class="mt-5 d-flex" >
+        <p>Element à rechercher :</p>
+        <input class="ms-4 " type="text" height="10px" size="3"  id="elementLookingFor" />
+      </div>
+  
+      <div class="col-3">
+        <button class="btn btn-dark" id="search">Chercher</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3 mb-5 bg-info rounded p-3 mt-5 shadow">
+      <div class="mt-5" id="resultatDicho">
+
+        <div class="mt-2 d-flex" >
+          <p>Somme des éléments :</p>
+          <span class="ms-4" id="sumElements" ></span>
+        </div>
+  
+        <div class="mt-2 d-flex" >
+          <p>Nombre de Pairs :</p>
+          <span class="ms-4" id="pairsElement" ></span>
+        </div>
+  
+        <div class="mt-2 d-flex" >
+          <p>Plus grand élément pair :</p>
+          <span class="ms-4" id="evenPairElement" >Pas d'éléments pair dans le tableau</span>
+        </div>
+
+        <div class="mt-2 d-flex" >
+          <p>Position de l'élément dans la table :</p>
+          <span class="ms-4" id="indexElement" ></span>
+        </div> 
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/td3_modules14.js" type="module"></script>
+</body>
+</html>

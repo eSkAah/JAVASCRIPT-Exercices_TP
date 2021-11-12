@@ -1,3 +1,5 @@
+
+   
 let monStockage = localStorage;
 
 /**
@@ -83,17 +85,14 @@ function getVilles(){
 function getInfosVille(){
   clearTableau();
 
-  let communesPop = document.getElementById('communesPop');
   let departCode = document.getElementById('departs').value;
   let codeVille = document.getElementById('villes').value;
   let population = document.getElementById('population');
-  let villeSelectionne;
-  let totalPop = [];
 
   fetch('https://geo.api.gouv.fr/departements/'+ departCode +'/communes',{method: 'get'})
   .then( res => res.json())
   .then( (res) => {
-    
+    let villeSelectionne;
 
     //On récupère l'objet complet de la ville selectionné dans l'input et on affiche son nom et sa population
     for(let i = 0; i < res.length; i++){
@@ -116,18 +115,19 @@ function getInfosVille(){
         let colNom = ligne.insertCell();
         let colCp = ligne.insertCell();
         let colPop = ligne.insertCell();
+        let colMeteo = ligne.insertCell();
 
         //Ajout du contenu qui se trouve dans notre objet, et dans la variable
         colNom.textContent = ville.nom;
         colCp.textContent = cp;
         colPop.textContent = ville.population;
-
-        totalPop.push(ville.population);
-        communesPop.textContent = "La population total dans ces communes est de : " +  totalPop.reduce(sum);
+        colMeteo.innerHTML = '<button class="btn btn-dark" onclick="meteo(`'+ ville.nom + '`)">Voir Météo</button>';
 
         tabVilles.appendChild(ligne);
         
-      }
+      }else{
+        console.log('Aucune commune éxistante dans la base de données');
+      }      
       
     })
   }).catch( (err) => {
@@ -136,16 +136,6 @@ function getInfosVille(){
 
 }
 
-
-/**
- * 
- * @param {Number} previousValue 
- * @param {Number} currentValue 
- * @returns 
- */
-function sum(previousValue, currentValue) {
-  return previousValue + currentValue;
-}
 
 /**
  * Permet de vérifier si un des codePostaux entre la ville selectionné et ceux dans la liste Match, si oui on fait un retour de ce code, sinon renvoi -1
@@ -181,8 +171,6 @@ function meteo(villeCible){
 
 // Lancement de la récupération de données via l'API
 getRegions();
-
-
 
 
 
